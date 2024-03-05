@@ -22,6 +22,7 @@
 <body>
     <div class="container">
         <h2>Students lists</h2>
+        <a href="add.html" class ="btn btn-success">Add students</a>
     <table class="table table-striped">
     <thead>
       <tr>

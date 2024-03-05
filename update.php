@@ -1,16 +1,26 @@
 <?php
-// require db
 require_once 'config.php';
-$id = $_GET['sid'];
+
+$name = $_POST['name'];
+$age = $_POST['age'];
+$email = $_POST['email'];
+$id =$_POST['sid'];
+
+
 
 // command
-$edit = 'SELECT * FROM students';
-// excecute query
-$result =mysqli_query($conn,$edit);
-$row = mysqli_fetch_array($result);
+$sql = "UPDATE students  SET name ='$name',age ='$age',email = '$email' WHERE id=$id";  
 
+
+$result = mysqli_query( $conn, $sql );
+$row = mysqli_fetch_assoc( $result );
+
+
+
+mysqli_query($conn, $sql); 
+
+header("Location: view.php");
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,10 +44,9 @@ $row = mysqli_fetch_array($result);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
-    <h2>Edit students</h2>
+    <h2>Updated students List</h2>
     <div class="container">
-      <form action="update.php" method="post">
-        <input type="hidden" name="sid" value="<?php echo $id?>">
+      <form action="add.html" method="post">
         <div class="form-group">
           <label for="name">name</label>
           <input
@@ -46,7 +55,7 @@ $row = mysqli_fetch_array($result);
             placeholder="Enter name"
             id="name"
             name="name"
-            value=" <?php echo $row['name']; ?> "
+            value="<?php echo $row['name']; ?>"
           />
         </div>
         <div class="form-group">
@@ -57,7 +66,7 @@ $row = mysqli_fetch_array($result);
             placeholder="Enter age"
             id="age"
             name="age"
-            value="<?php echo $row['age']?>"
+            value=" <?php echo $row['age']?>"
           />
         </div>
         <div class="form-group">
@@ -68,10 +77,10 @@ $row = mysqli_fetch_array($result);
             placeholder="Enter email"
             id="email"
             name="email"
-            value=" <?php echo $row['email']; ?> "
+            value="<?php echo $row['email']?> "
           />
         </div>
-        <button type="submit" class="btn btn-success">update</button>
+        <button type="submit" class="btn btn-warning">Add more students</button>
       </form>
     </div>
   </body>
