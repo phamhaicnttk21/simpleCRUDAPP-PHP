@@ -37,7 +37,7 @@ $row = mysqli_fetch_array($result);
     <h2>Edit students</h2>
     <div class="container">
       <form action="update.php" method="post">
-        <input type="hidden" name="sid" value="<?php echo $id?>">
+        <input type="hidden" name="sid" value="<?php echo $row['id']?>">
         <div class="form-group">
           <label for="name">name</label>
           <input
@@ -71,7 +71,8 @@ $row = mysqli_fetch_array($result);
             value=" <?php echo $row['email']; ?> "
           />
         </div>
-        <button type="submit" class="btn btn-success">update</button>
+         
+        <button type="submit" class="btn btn-success">Update</button>
       </form>
     </div>
   </body>
