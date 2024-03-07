@@ -10,6 +10,6 @@ $delete = "DELETE FROM students where id =$id";
 
 
 mysqli_query($conn,$delete);
-echo "Delete successfully";
+
 header("Location:view.php")
 ?>
